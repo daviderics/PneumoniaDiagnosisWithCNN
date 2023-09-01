@@ -59,6 +59,10 @@ The table below describes both the baseline model (Model 1 in the table in the R
 
 The main changes from the baseline model to the best-performing model was that the number of Conv2D layers was reduced from 4 to 3, Dropout layers were added, regularization was added, and the optimizer was changed from SGD to RMSProp.
 
+The plot below shows the accuracy (left) and loss (right) as a function of epoch. The model does overfit slightly, but not as badly as some of the other models that were tried.
+
+<img src="figures/accuracy_loss_vs_epoch.png"  width="30%" height="30%">
+
 ## Results
 
 The table below summarizes the performance of each model that was tried. The baseline model (described in the previous section) is Model 1. Each model is the same as a previous model, but with one change and you can see what was changed in the Description column. For example, Model 2 says "1 + RMSProp optimizer" which means that it is the same as Model 1 except that it uses RMSProp as the optimizer.
