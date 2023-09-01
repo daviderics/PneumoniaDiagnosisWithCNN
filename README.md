@@ -61,7 +61,7 @@ The main changes from the baseline model to the best-performing model was that t
 
 Below is an image representing the architecture of the network.
 
-<img src="figures/architecture.png"  width="80%" height="80%">
+<img src="figures/architecture.png"  width="120%" height="120%">
 
 The plot below shows the accuracy (left) and loss (right) as a function of epoch. The model does overfit slightly, but not as badly as some of the other models that were tried.
 
