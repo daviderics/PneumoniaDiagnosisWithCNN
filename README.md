@@ -59,6 +59,10 @@ The table below describes both the baseline model (Model 1 in the table in the R
 
 The main changes from the baseline model to the best-performing model was that the number of Conv2D layers was reduced from 4 to 3, Dropout layers were added, regularization was added, and the optimizer was changed from SGD to RMSProp.
 
+Below is an image representing the architecture of the network.
+
+<img src="figures/architecture.png"  width="80%" height="80%">
+
 The plot below shows the accuracy (left) and loss (right) as a function of epoch. The model does overfit slightly, but not as badly as some of the other models that were tried.
 
 <img src="figures/accuracy_loss_vs_epoch.png"  width="80%" height="80%">
