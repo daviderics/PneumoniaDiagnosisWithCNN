@@ -7,6 +7,7 @@ This is the Phase 4 Project for the Flatiron School Data Science Bootcamp.
 |[student.ipynb](https://github.com/daviderics/PneumoniaDiagnosisWithCNN/blob/main/student.ipynb)                | Jupyter notebook used to perform the analysis.                 |
 |student.pdf                  | PDF of Jupyter notebook                                        |
 |pneumonia_diagnosis_cnn.pdf  | PDF of the non-technical presentation for stakeholders.        |
+|model5.h5                    | The best-performing model (already fit to training data)       |
 |figures                      | Folder containing figures used in the presentation and README. |
 
 ## Overview
