@@ -61,7 +61,7 @@ The main changes from the baseline model to the best-performing model was that t
 
 The plot below shows the accuracy (left) and loss (right) as a function of epoch. The model does overfit slightly, but not as badly as some of the other models that were tried.
 
-<img src="figures/accuracy_loss_vs_epoch.png"  width="60%" height="60%">
+<img src="figures/accuracy_loss_vs_epoch.png"  width="80%" height="80%">
 
 ## Results
 
