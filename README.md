@@ -33,11 +33,11 @@ Each X-ray is labeled as either NORMAL, BACTERIA, or VIRUS. The NORMAL images ar
 
 Below is a bar chart showing how many images are present in the dataset for each category.
 
-<img src="figures/class_barchart.png"  width="30%" height="30%">
+<img src="figures/class_barchart.png"  width="50%" height="50%">
 
 The images have a wide variety of sizes and dimensions. Some were larger than 2500x2500 while others were smaller than 500x500. 
 
-<img src="figures/dimensions_per_class_train.png"  width="40%" height="40%">
+<img src="figures/dimensions_per_class_train.png"  width="50%" height="50%">
 
 The plot above shows the dimensions of each image in the training dataset (which contains 500 of each category). The plot shows that the X-rays for healthy patients tend to be larger (higher resolution) than those of sick patients. As discussed in the next section, each image was downsampled to a common size before training the model, so I do not expect this to matter, but I do think it could be worth collecting X-rays that do not have this systematic difference between healthy and sick patients.
 
@@ -65,7 +65,7 @@ Below is an image representing the architecture of the network.
 
 The plot below shows the accuracy (left) and loss (right) as a function of epoch. The model does overfit slightly, but not as badly as some of the other models that were tried.
 
-<img src="figures/accuracy_loss_vs_epoch.png"  width="80%" height="80%">
+<img src="figures/accuracy_loss_vs_epoch.png"  width="100%" height="100%">
 
 ## Results
 
@@ -98,7 +98,7 @@ The worst-case scenario for the model is predicting that a patient does not have
 
 As stated in the Data section, the images had a wide range of sizes, but were all downsampled to the same size for the model. While I expected that the downsampling would mean that the original image sizes would not matter, I still wanted to see if the accuracy was dependent on image size. I did this by dividing the 624 test images into four groups sorted by the number of pixels in the image. Below is a histogram of the accuracy for each group (smaller images on the left, larger images on the right).
 
-<img src="figures/accuracy_vs_image_size.png"  width="40%" height="40%">
+<img src="figures/accuracy_vs_image_size.png"  width="50%" height="50%">
 
 The largest images did have the highest accuracy (91%). The smallest images actually had the second highest accuracy (84.6%) while the middle two groups were the lowest (78.2% and 76.3%). The fact that the largest images had the highest accuracy might seem to indicate that the model does perform better on larger images, but I do not actually think that is what's happening. Earlier, we saw that the X-rays for healthy patients tended to be larger. I think the effect seen in the graph above is down to the model performing better on images of healthy patients which just tend to run larger. The fact that the smallest images performed second best could be due to the fact that very few healthy patients had X-rays that small, so the small images just needed to distinguish between the two types of pneumonia rather than handling three classes. I would still like to have a sample that does not have a systematic difference in image size just in case it does have some effect on the performance.
 
