@@ -1,5 +1,6 @@
 # PneumoniaDiagnosisWithCNN
 This is the Phase 4 Project for the Flatiron School Data Science Bootcamp.
+Author: David Schenck (September 2023)
 
 ## Contents of Repository
 |File/Folder                  | Description                                                    |
@@ -11,7 +12,7 @@ This is the Phase 4 Project for the Flatiron School Data Science Bootcamp.
 |figures                      | Folder containing figures used in the presentation and README. |
 
 ## Overview
-In this project, I used a Convolutional Neural Network (CNN) to diagnose pediatric pneumonia from chest X-rays.
+In this project, I used a Convolutional Neural Network (CNN) to diagnose pediatric pneumonia from chest X-rays. The model is able to take a chest X-ray as an input and it returns one of three diagnoses (healthy, bacterial pneumonia, or viral pneumonia). The model was able to achieve 82.5% overall accuracy and 91.8% accuracy when considering just healthy vs. sick classification. The model could be useful for any medical facility that does not have a doctor capable of identifying pneumonia from a chest X-ray.
 
 ## Problem
 The World Health Organization (WHO) estimates that 2 million children below the age of 5 die from pneumonia every year, making it the leading cause of child mortality worldwide. The vast majority of cases and deaths are in developing countries, particularly in Africa and Southeast Asia.
@@ -20,7 +21,7 @@ Timely diagnosis of pneumonia is key for improving health outcomes for patients.
 
 One effective method of diagnosing pneumonia is by taking chest X-rays. A medical expert can identify the telltale signs of pneumonia by observing the X-rays, but some facilities in developing countries lack such an expert. This slows down the process of diagnosing the disease, leading to delays in medical intervention.
 
-A potential solution is to create a computer model that can interpret the chest X-rays. Such a model could be made available to medical facilities across the world, helping to shorten the time it takes to diagnose pediatric pneumonia so that life-saving treatment can be provided faster.
+A potential solution is to create a computer model that diagnose pneumonia from chest X-rays. Such a model could be made available to medical facilities across the world, helping to shorten the time it takes to diagnose pediatric pneumonia so that life-saving treatment can be provided faster.
 
 ## Stakeholder
 Primarily, the goal of this work is to create a model that could be used by doctors in developing countries to make up for the lack of trained experts who can diagnose pneumonia by inspecting a chest X-ray. There is no reason why it couldn't be implemented more widely than that. Any medical facility that can take X-rays could utilize such a model.
@@ -75,15 +76,15 @@ The table below summarizes the performance of each model that was tried. The bas
 The main criteria used for judging the performance were overall accuracy, binary accuracy, recall for each class, AUC values for each class, and the time to train the model. The binary accuracy refers to the accuracy if only two classes are considered (healthy vs. sick).
 
 |Version |Description |Train Accuracy |Binary Train Accuracy |Test Accuracy |Binary Test Accuracy |Recall (healthy) |Recall (bacterial) |Recall (viral) |AUC (healthy) |AUC (bacterial) |AUC (viral) |time (s) |
-|-----|------------------------|--------|--------|-------|-------|-------|-------|--------|-------|-------|--------|-------|
-|1    |Baseline                |89.1%   |97.7%   |73.4%  |87.7%  |75.6%  |62.8%  |87.2%   |0.945  |0.935  |0.896   |1257   |
-|2    |1 + RMSprop optimizer   |100%    |100%    |78.5%  |92.9%  |85.0%  |74.0%  |75.7%   |0.97   |0.924  |0.888   |1217   |
-|3    |2 + Dropout layers      |99.9%   |100%    |83.7%  |93.6%  |89.3%  |83.9%  |74.3%   |0.971  |0.934  |0.917   |1372   |
-|4    |3 + L2 regularization   |82.7%   |96.1%   |81.7%  |90.9%  |82.1%  |84.7%  |76.4%   |0.957  |0.938  |0.906   |1420   |
-|5    |4 + remove a layer      |92.5%   |97.9%   |82.5%  |91.8%  |85.5%  |80.6%  |81.1%   |0.957  |0.926  |0.913   |1332   |
-|6    |5 input is 172x240      |94.5%   |98.5%   |81.2%  |93.1%  |87.6%  |72.7%  |85.1%   |0.962  |0.927  |0.902   |2376   |
-|7    |5 with 2400 input images|84.1%   |95.5%   |81.7%  |89.6%  |86.8%  |86.0%  |66.9%   |0.953  |0.918  |0.914   |2014   |
-|8    |5 + L2 constant=0.008   |84.0%   |96.1%   |79.0%  |89.4%  |76.9%  |81.0%  |79.1%   |0.956  |0.931  |0.906   |1300   |
+|-----|------------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|-------|
+|1    |Baseline                |89.1%    |97.7%    |73.4%    |87.7%    |75.6%    |62.8%    |87.2%    |0.945    |0.935    |0.896    |1257   |
+|2    |1 + RMSprop optimizer   |100%     |100%     |78.5%    |92.9%    |85.0%    |74.0%    |75.7%    |0.97     |0.924    |0.888    |1217   |
+|3    |2 + Dropout layers      |99.9%    |100%     |83.7%    |93.6%    |89.3%    |83.9%    |74.3%    |0.971    |0.934    |0.917    |1372   |
+|4    |3 + L2 regularization   |82.7%    |96.1%    |81.7%    |90.9%    |82.1%    |84.7%    |76.4%    |0.957    |0.938    |0.906    |1420   |
+|**5**|**4 + remove a layer**  |**92.5%**|**97.9%**|**82.5%**|**91.8%**|**85.5%**|**80.6%**|**81.1%**|**0.957**|**0.926**|**0.913**|**1332** |
+|6    |5 input is 172x240      |94.5%    |98.5%    |81.2%    |93.1%    |87.6%    |72.7%    |85.1%    |0.962    |0.927    |0.902    |2376   |
+|7    |5 with 2400 input images|84.1%    |95.5%    |81.7%    |89.6%    |86.8%    |86.0%    |66.9%    |0.953    |0.918    |0.914    |2014   |
+|8    |5 + L2 constant=0.008   |84.0%    |96.1%    |79.0%    |89.4%    |76.9%    |81.0%    |79.1%    |0.956    |0.931    |0.906    |1300   |
 
 The best-performing model is Model 5. This model achieved 82.5% overall accuracy and 91.8% binary accuracy. This model was the only one in which the recall for each class was above 80%. Each of the other models tended to have one class that lagged behind the others in recall, but Model 5 was better balanced.
 
@@ -110,3 +111,5 @@ The largest images did have the highest accuracy (91%). The smallest images actu
 2. **Closely monitor success of treatment**: While the model correctly determines whether a child has some sort of pneumonia over 90% of the time, the success rate of identifying the correct type of pneumonia is closer to 80%. I would recommend that once a treatment plan is started, the patient is monitored very closely to make sure the correct treatment has been provided. If the model says a patient has bacterial pneumonia, but is not responding to antibiotics, the doctors should keep in mind that it might still be viral pneumonia despite what the model said.
 
 2. **Collect more uniform data**: The chest X-rays of healthy patients were typically of a higher resolution than those of patients with pneumonia. While all of the data is downsampled to a common image size before fitting the model, it is still possible that this systematic difference in the images could affect the performance of the model. I am not a doctor, so I don't know why this difference in image resolution is present in the data, but if it is possible to collect chest X-rays that do not have this class-dependent difference in resolution, then it can be checked whether this affects the model.
+
+Contact: email: david.eric24@gmail.com       linkedIn: https://www.linkedin.com/in/david-schenck-data/
