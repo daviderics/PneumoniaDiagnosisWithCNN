@@ -5,8 +5,8 @@ Author: David Schenck (September 2023)
 ## Contents of Repository
 |File/Folder                  | Description                                                    |
 |:----------------------------|:---------------------------------------------------------------|
-|[student.ipynb](https://github.com/daviderics/PneumoniaDiagnosisWithCNN/blob/main/student.ipynb)                | Jupyter notebook used to perform the analysis.                 |
-|student.pdf                  | PDF of Jupyter notebook                                        |
+|[pneumonia_cnn.ipynb](https://github.com/daviderics/PneumoniaDiagnosisWithCNN/blob/main/pneumonia_cnn.ipynb)                | Jupyter notebook used to perform the analysis.                 |
+|pneumonia_cnn.pdf            | PDF of Jupyter notebook                                        |
 |pneumonia_diagnosis_cnn.pdf  | PDF of the non-technical presentation for stakeholders.        |
 |model5.h5                    | The best-performing model (already fit to training data)       |
 |figures                      | Folder containing figures used in the presentation and README. |
