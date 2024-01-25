@@ -113,4 +113,27 @@ The largest images did have the highest accuracy (91%). The smallest images actu
 
 2. **Collect more uniform data**: The chest X-rays of healthy patients were typically of a higher resolution than those of patients with pneumonia. While all of the data is downsampled to a common image size before fitting the model, it is still possible that this systematic difference in the images could affect the performance of the model. I am not a doctor, so I don't know why this difference in image resolution is present in the data, but if it is possible to collect chest X-rays that do not have this class-dependent difference in resolution, then it can be checked whether this affects the model.
 
+## Transfer Learning
+
+Note: This work was completed in January 2024 after the project was presented and graded.
+
+All of the work described in above sections is related to a convolutional neural network I created from scratch (the work can be found in pneumonia_cnn.ipynb). An alternative approach is to use transfer learning, which means taking a neural network that was already trained on a different dataset, then adjusting it slightly to work with a different dataset.
+
+**Training An Existing Network**
+
+Keras provides a large number of existing neural networks. I chose to use ResNet50V2, a deep neural network with over 23.5 million parameters. As an initial step, I froze all of the weights in the network, then replaced the output layer with a new layer with 3 nodes (one for each class). I trained the network on the X-ray data for 4 epochs with only the weights connecting to the final layer unfrozen.
+
+In order to format the data correctly for ResNet50V2, I had to make some minor changes from what I did for my neural network. First, ResNet50V2 expects input images to have 3 channels. The X-ray images are grayscale, meaning they only have one channel, but I simply used the grayscale values 3 times to simulate having three channels. Also, ResNet50V2 needs the input to be scaled such that values fall between -1 and 1. I adjusted the functions I wrote to perform this rescaling prior to training the network.
+
+The performance of ResNet50V2 after the initial training was decent, but not quite as good as the best convolutional neural network. The test accuracy was 76.1% and the binary test accuracy was 88.5%, compared to 82.5% and 91.8% from the CNN, respectively.
+
+After the initial training, I unfroze the weights of the network and trained it for 5 more epochs with a very small learning rate. This is called fine-tuning. The goal is to slightly adjust the weights to better fit the data without completely erasing the original structure of the network. This improved the metrics beyond what the best CNN achieved. The test accuracy was 85.1% and the binary test accuracy was 92.5%. The model did overfit more than the CNN and the recall for viral pneumonia was lower than before, but the overall performance of the fine-tuned model was the best.
+
+|Version |Train Accuracy |Binary Train Accuracy |Test Accuracy |Binary Test Accuracy |Recall (healthy) |Recall (bacterial) |Recall (viral) |AUC (healthy) |AUC (bacterial) |AUC (viral) |time (s) |
+|-----|------------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|-------|
+|**5**                   |**92.5%**|**97.9%**|**82.5%**|**91.8%**|**85.5%**|**80.6%**|**81.1%**|**0.957**|**0.926**|**0.913**|**1332** |
+|ResNet50V2 (frozen)     |89.9%    |97.5%    |76.1%    |88.5%    |74.8%    |71.9%    |85.1%    |0.962    |0.940    |0.891    |102   |
+|ResNet50V2 (fine-tuned) |99.9%    |100.0%    |85.1%    |92.5%    |84.2%    |93.0%    |73.6%    |0.983    |0.954    |0.922    |446   |
+
+
 Contact: email: david.eric24@gmail.com       linkedIn: https://www.linkedin.com/in/david-schenck-data/
