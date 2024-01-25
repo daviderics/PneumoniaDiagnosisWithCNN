@@ -6,9 +6,10 @@ Author: David Schenck (September 2023)
 |File/Folder                  | Description                                                    |
 |:----------------------------|:---------------------------------------------------------------|
 |[pneumonia_cnn.ipynb](https://github.com/daviderics/PneumoniaDiagnosisWithCNN/blob/main/pneumonia_cnn.ipynb)                | Jupyter notebook used to perform the analysis.                 |
-|pneumonia_cnn.pdf            | PDF of Jupyter notebook                                        |
+|pneumonia_cnn.pdf            | PDF of Jupyter notebook.                                       |
 |pneumonia_diagnosis_cnn.pdf  | PDF of the non-technical presentation for stakeholders.        |
-|model5.h5                    | The best-performing model (already fit to training data)       |
+|model5.h5                    | The best-performing model (already fit to training data).      |
+|transfer_learning.ipynb      | Jupyter notebook that used transfer learning.                  |
 |figures                      | Folder containing figures used in the presentation and README. |
 
 ## Overview
