@@ -130,7 +130,7 @@ The performance of ResNet50V2 after the initial training was decent, but not qui
 After the initial training, I unfroze the weights of the network and trained it for 5 more epochs with a very small learning rate. This is called fine-tuning. The goal is to slightly adjust the weights to better fit the data without completely erasing the original structure of the network. This improved the metrics beyond what the best CNN achieved. The test accuracy was 85.1% and the binary test accuracy was 92.5%. The model did overfit more than the CNN and the recall for viral pneumonia was lower than before, but the overall performance of the fine-tuned model was the best.
 
 |Version |Train Accuracy |Binary Train Accuracy |Test Accuracy |Binary Test Accuracy |Recall (healthy) |Recall (bacterial) |Recall (viral) |AUC (healthy) |AUC (bacterial) |AUC (viral) |time (s) |
-|-----|------------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|-------|
+|------------------------|---------|---------|---------|---------|---------|---------|---------|---------|---------|---------|-------|
 |**5**                   |**92.5%**|**97.9%**|**82.5%**|**91.8%**|**85.5%**|**80.6%**|**81.1%**|**0.957**|**0.926**|**0.913**|**1332** |
 |ResNet50V2 (frozen)     |89.9%    |97.5%    |76.1%    |88.5%    |74.8%    |71.9%    |85.1%    |0.962    |0.940    |0.891    |102   |
 |ResNet50V2 (fine-tuned) |99.9%    |100.0%    |85.1%    |92.5%    |84.2%    |93.0%    |73.6%    |0.983    |0.954    |0.922    |446   |
